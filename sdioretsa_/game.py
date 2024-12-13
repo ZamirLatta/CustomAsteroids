@@ -1,15 +1,17 @@
 import pygame
+from pynput.keyboard import Key, Listener
 pygame.init()
 from utils import load_sprite
 from models import GameObject
+from models import Spaceship
 
 class Sdioretsa:
     def __init__(self):
         self.__init__
         self.screen = pygame.display.set_mode((800,600))
         self.clock = pygame.time.Clock()
-        self.spaceship = GameObject((400,300), load_sprite("spaceship"), (0,0))
-        self.asteroidone = GameObject((400,300), load_sprite("asteroidone"), (1,0))
+        self.Spaceship = Spaceship((400,300))
+        #self.asteroidone = GameObject((400,300), load_sprite("asteroidone"), (1,0))
 
     def main_loop(self):
         run = True
@@ -26,15 +28,19 @@ class Sdioretsa:
         pygame.display.set_caption("Sdioretsa")
     
     def _handle_input(self):
-        pass
+            if Key == () == Key.right:
+                self.spaceship.rotate(clockwise=True)
+            elif Key == Key.left:
+                self.spaceship.rotate(clockwise=False)
 
     def _process_game_logic(self):
-        self.spaceship.move()
-        self.asteroidone.move()
+        self.Spaceship.move()
 
     def _draw(self):
-        self.screen.fill((0,0,0))
-        self.spaceship.draw(self.screen)
-        self.asteroidone.draw(self.screen)
+        angle = self.direction.angle_to(UP)
+        rotated_surface = rotozoom(self.sprite, angle, 1.0)
+        rotated_surface_size = Vector2(rotated_surface.get_size())
+        blit_position = self.position - rotated_surface_size * 0.5
+        surface.blit(rotated_surface, blit_position)
         pygame.display.flip()
         self.clock.tick(60)
